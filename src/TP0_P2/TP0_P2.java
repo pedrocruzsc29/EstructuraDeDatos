@@ -9,10 +9,12 @@ public class TP0_P2 {
         System.out.println("### LANZAMIENTO DE DADOS ###");
         int cant = Helper.GetValidNumber("Ingrese una cantidad: ");
         System.out.println("Cantidad: " + cant);
-        int num1 = 1 + (int) (Math.random() * 6);
-        int num2 = 1 + (int) (Math.random() * 6);
-        System.out.println("El primer numero generado es: " + num1);
-        System.out.println("El segundo numero generado es: " + num2);
-
+        for (int i = 0; i < cant; i++) {
+            System.out.println("");
+            int num1 = 1 + (int) (Math.random() * 6);
+            int num2 = 1 + (int) (Math.random() * 6);
+            System.out.println("El primer numero generado es: " + num1);
+            System.out.println("El segundo numero generado es: " + num2);
+        }
     }
 }
