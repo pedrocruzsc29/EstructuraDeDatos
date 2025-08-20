@@ -10,7 +10,9 @@ public class TP0_P2 {
         int cant = Helper.GetValidNumber("Ingrese una cantidad: ");
         System.out.println("Cantidad: " + cant);
         int num1 = 1 + (int) (Math.random() * 6);
+        int num2 = 1 + (int) (Math.random() * 6);
         System.out.println("El primer numero generado es: " + num1);
+        System.out.println("El segundo numero generado es: " + num2);
 
     }
 }
