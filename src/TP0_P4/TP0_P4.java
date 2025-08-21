@@ -10,7 +10,7 @@ public class TP0_P4 {
         System.out.println("4) Dividir");
         int op = Helper.GetValidNumber("Elija una opción: ");
         switch (op){
-            case 1: 
+            case 1:
         }
 
     }
