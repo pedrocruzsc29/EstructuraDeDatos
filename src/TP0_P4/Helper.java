@@ -16,10 +16,12 @@ public class Helper {
             }else{
                 try{
                     number = Integer.parseInt(entrance);
-                    
+                    band = true;
+                } catch (NumberFormatException e){
+                    System.out.println("Error: Debe ingresar un numero!");
                 }
             }
-
-        }
+        }while(!band);
+        return number;
     }
 }
