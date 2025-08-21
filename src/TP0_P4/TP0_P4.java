@@ -8,6 +8,10 @@ public class TP0_P4 {
         System.out.println("2) Restar");
         System.out.println("3) Multiplicar");
         System.out.println("4) Dividir");
+        int op = Helper.GetValidNumber("Elija una opción: ");
+        switch (op){
+            case 1: 
+        }
 
     }
 }
