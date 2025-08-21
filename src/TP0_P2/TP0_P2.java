@@ -44,7 +44,7 @@ public class TP0_P2 {
         System.out.println("Cantidad Par: " + cont_par + " Cantidad Impar: " + cont_impar);
         System.out.println("### FIN DEL PROGRAMA ###");
         System.out.println("zerocool");
-        System.out.println("Zerocool");
+        System.out.println("Zerocool very nice");
     }
 }
 //zerocool
