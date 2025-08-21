@@ -43,6 +43,7 @@ public class TP0_P2 {
         System.out.println("Promedio: " + prom);
         System.out.println("Cantidad Par: " + cont_par + " Cantidad Impar: " + cont_impar);
         System.out.println("### FIN DEL PROGRAMA ###");
+        System.out.println("zerocool");
     }
 }
 //zerocool
