@@ -12,13 +12,13 @@ public class TP0_P5 {
     }
     // AUTOMATIC FOR
     public static void Automatic_For(int a, int b, int c){
-        int suma = 0; int cont_paso = 0; int prom = 0;
+        int suma = 0; int cont_paso = 0;
         for (int i = a;i < b; i = i + c) {
             System.out.println(i);
-            cont_paso = cont_paso + 1;
-            suma = suma + i;
+            cont_paso = cont_paso + 1; // Cuenta las veces que se mostro el paso
+            suma = suma + i; // Almacena los numeros vistos
         }
-        System.out.println("Promedio: " + (suma / cont_paso));
+        System.out.println("Promedio: " + (suma / cont_paso)); // Se muestra el promedio, una vez terminada la iteración
     }
 
     // CONTROL PRINCIPAL
