@@ -9,6 +9,8 @@ public class Rectangulo {
     // CONSTRUCTORES
 
     public Rectangulo(){
+        this.Ancho = 0;
+        this.Alto = 0;
     }
 
     public Rectangulo(double Ancho, double Alto){
@@ -22,15 +24,27 @@ public class Rectangulo {
         return this.Ancho;
     }
 
-    public void SetAncho(){
+    public void SetAncho(double Ancho) {
         this.Ancho = Ancho;
     }
 
-    public double GetAlto(){
+    public double GetAlto() {
         return this.Alto;
     }
 
-    public void SetAlto(){
+    public void SetAlto(double Alto){
         this.Alto = Alto;
+    }
+
+    // CALCULAR AREA
+
+    public double Area(){
+        return this.Ancho * this.Alto;
+    }
+
+    // CALCULAR PERIMETRO
+
+    public double Perimeter(){
+        return 2 * (this.Ancho + this.Alto);
     }
 }
