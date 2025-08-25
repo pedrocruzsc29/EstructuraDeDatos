@@ -48,3 +48,5 @@ public class Rectangulo {
         return 2 * (this.Ancho + this.Alto);
     }
 }
+
+// zerocool
