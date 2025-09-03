@@ -77,16 +77,91 @@ public class Licencia {
 
     }
 
-    public void LoadDates(LocalDate fechaEmision, LocalDate fechaVencimiento){
+    // CARGAR FECHAS
+
+    public void LoadDates(){
+
+        LocalDate fechaEmision = Helper.GetValidDate("Ingrese fecha de Emisión: ");
+        LocalDate fechaVencimiento = Helper.GetValidDate("Ingrese fecha de Vencimiento: ");
         if (ValidateDates(fechaEmision,fechaVencimiento)){
             this.fechaEmision = fechaEmision;
             this.fechaVencimiento = fechaVencimiento;
         }else{
+            System.out.println("Fechas fuera de termino! Se actualizaron...");
             this.fechaEmision = LocalDate.now();
             this.fechaVencimiento = this.fechaEmision.plusMonths(1);
         }
     }
 
+    //CARGAR TIPO DE LICENCIA
+    public String LoadLicenceType(){
+
+        String type = "a definir";
+
+        System.out.println("# TIPO DE LICENCIA #");
+        System.out.println("1) Conducir");
+        System.out.println("2) Porte de Armas");
+        System.out.println("3) Habilitación comercial");
+        int op = Helper.GetValidOption();
+        if (op == 1) {
+            type = "Conducir";
+        }else if (op == 2){
+            type = "Porte de Armas";
+        } else if (op == 3){
+            type = "Habilitación comercial";
+        }
+        return type;
+    }
+
+    // CARGAR LICENCIA
+    public void LoadLicense(){
+        this.numeroIdentificacion = Helper.GetValidNumber("Ingrese el numero de identificación: ");
+        this.tipoLicencia = LoadLicenceType();
+        LoadDates();
+    }
+
+    // ESTADO DE LICENCIA
+
+    public boolean fechaConsulta(LocalDate fechaCons,LocalDate fechaEmision, LocalDate fechaVencimiento){
+        boolean vigente = false;
+
+        if (( fechaCons.equals(fechaEmision) || fechaCons.isAfter(fechaEmision)) && (fechaCons.equals(fechaVencimiento)||fechaCons.isBefore(fechaVencimiento))){
+            vigente = true;
+        }
+        return vigente;
+    }
+
+
+
+    // CALCULAR DIAS RESTANTES -> ERROR
+
+    public int calcularDiasRestantesOVencidos(LocalDate fechaCons, LocalDate fechaEmision,LocalDate fechaVencimiento){
+        if (fechaConsulta(fechaCons,fechaEmision,fechaVencimiento)){
+            long Days = ChronoUnit.DAYS.between(fechaCons,fechaVencimiento);
+            return (int) Days;
+        }else{
+            long Days = ChronoUnit.DAYS.between(fechaCons,fechaVencimiento);
+            return (int) Days;
+        }
+    }
+
+    // CATEGORIES
+
+    public void estaVigente(int dias){
+        if (dias>0){
+            System.out.println("Dias restastantes para vencimiento: " + dias);
+        }else if (dias < 0){
+            System.out.println("Dias transcurridos desde el vencimiento: " + dias);
+        }else{
+            System.out.println("Su fecha de vencimiento es hoy!");
+        }
+    }
+
+    // RENOVACIÓN
+
+    public void simularRenovacion(int cantidadYears){
+        this.fechaVencimiento = this.fechaVencimiento.plusYears(cantidadYears);
+    }
 
 
 
@@ -96,8 +171,6 @@ public class Licencia {
         return "# LICENCIAS # LICENCIA N°: " + this.numeroIdentificacion + " TIPO: " +
                 this.tipoLicencia + " EMISION: " + this.fechaEmision + " VENCIMIENTO: " + this.fechaVencimiento;
     }
-
 }
-
 
 // zerocool

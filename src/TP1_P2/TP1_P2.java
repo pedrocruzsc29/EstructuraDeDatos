@@ -27,6 +27,8 @@ public class TP1_P2 {
                     System.out.println("Ingrese el nombre del producto: ");
                     name = sc.nextLine();
                     product.SetName(name);
+                    //System.out.println("Ingrese el nombre del producto: ");
+                    //product.SetName(sc.nextLine());
                     precio = (double) Helper.GetValidNumber("Ingrese el precio: ");
                     product.SetPrice(precio);
                     stock = Helper.GetValidNumber("Ingrese el stock: ");
