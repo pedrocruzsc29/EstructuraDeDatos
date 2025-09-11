@@ -5,11 +5,11 @@ public class Main {
         public static void main(String[] args) {
             int N = Helper.leerEntero("Ingrese un valor entero N (mayor a 1): ");
 
-            int[] arreglo = new int[N - 1];
+            int[] arreglo = new int[N];
             int[] arreglo2 = new int[N];
             Random random = new Random();
             // RANDOM NUMBERS FROM 1 TO 100
-            for (int i = 0; i < arreglo.length; i++) {
+            for (int i = 0; i < arreglo.length - 1; i++) { // Aqui estan los cambios
                 arreglo[i] = random.nextInt(100) + 1;
             }
 

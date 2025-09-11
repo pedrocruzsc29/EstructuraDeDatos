@@ -1,7 +1,5 @@
 package TP2_P5;
 
-import java.awt.image.ColorModel;
-
 public class TP2_P5 {
 
     // CARGAR ARREGLO
