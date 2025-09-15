@@ -57,4 +57,13 @@ public class Participante {
         this.correo = correo;
     }
 
+    @Override
+
+    public String toString(){
+        return "ID: " + GetidParticante() + " Nombre: " + GetNombre() +
+                " Apellido: " + GetApellido() + " Correo: " + GetCorreo();
+    }
+
 }
+
+// zerocool
