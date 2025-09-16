@@ -2,7 +2,6 @@ package TP2_P7;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class TP2_P7 {
 
@@ -97,9 +96,9 @@ public class TP2_P7 {
         return posParticipant;
     }
 
-    // AMMOUNT OF PARTICIPANTS
+    // AMOUNT OF PARTICIPANTS
 
-    public static int AmmountParticipants(ArrayList<Evento>events){
+    public static int AmountParticipants(ArrayList<Evento>events){
         int cant = 0;
         String name = Helper.GetValidString("Nombre del Evento: ");
         for (int i = 0; i < events.size();i++){
@@ -111,11 +110,28 @@ public class TP2_P7 {
         return cant;
     }
 
+    // CONSULT DATE
+
+    public static void ConsultDate(ArrayList<Evento> eventos){
+        boolean band = true;
+        LocalDate fecha = Helper.GetValidDate("Ingrese fecha a buscar ");
+        for (int i = 0; i < eventos.size(); i++){
+            if (fecha.equals(eventos.get(i).GetFecha())) {
+                System.out.println(eventos.get(i));
+                band = false;
+            }
+        }
+        if (band){
+            System.out.println("No se encontraron fechas coincidentes...");
+        }
+
+    }
+
     public static void main (String[] args){
 
         ArrayList<Evento> event = new ArrayList<>();
-        int id = 0;
-        int op = 0;
+        int id;
+        int op;
         do{
             System.out.println("### EVENTOS LAS VEGAS ###");
             System.out.println("1) Cargar evento");
@@ -181,16 +197,22 @@ public class TP2_P7 {
                     }
                     break;
                 case 6:
-                    int ammount = AmmountParticipants(event);
-                    if (ammount != 0){
-                        System.out.println("Cantidad de Participantes: " + ammount);
+                    System.out.println("### PARTICIPANTES ###");
+                    int amount = AmountParticipants(event);
+                    if (amount != 0){
+
+                        System.out.println("Cantidad de Participantes: " + amount);
                     }else{
                         System.out.println("El evento aún no tiene participantes...");
                     }
                     break;
                 case 7:
                     System.out.println("### CONSULTA DE FECHAS ###");
+                    ConsultDate(event);
+                    break;
 
+                case 8:
+                    System.out.println("### FIN DEL PROGRAMA ###");
                     break;
 
                 default:
