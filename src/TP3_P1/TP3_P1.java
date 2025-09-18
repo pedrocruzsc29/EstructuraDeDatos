@@ -41,6 +41,11 @@ public class TP3_P1 {
             }else{
                 Impares.push(num);
             }
+            aux_stack.push(num);
+        }
+
+        while (!aux_stack.isEmpty()){
+            Original.push(aux_stack.pop());
         }
     }
 
@@ -55,12 +60,10 @@ public class TP3_P1 {
             aux_stack.push(num);
         }
         while (!aux_stack.isEmpty()){
-            aux_stack.push(stack.pop());
+            stack.push(aux_stack.pop());
         }
-
         return acumulador;
     }
-
 
     // MAIN CONTROLLER
 
@@ -82,7 +85,10 @@ public class TP3_P1 {
         ShowStack(StackImpares);
         System.out.println();
         System.out.println("### PROMEDIOS Y SUMAS ###");
-        System.out.println("# STACK PARES # -> SUMA: " + AmountStack(StackPares) + " PROMEDIO: " + (double) AmountStack(StackPares) / StackPares.size());
+        System.out.println(String.format("# STACK PARES # -> SUMA: " + AmountStack(StackPares) + " CANTIDAD: " + StackPares.size() + " PROMEDIO: %.2f",(double) AmountStack(StackPares) / StackPares.size()));
+        System.out.println(String.format("# STACK IMPARES # -> SUMA: " + AmountStack(StackImpares) + " CANTIDAD: " + StackImpares.size() + " PROMEDIO: %.2f",(double)AmountStack(StackImpares) / StackImpares.size()));
+        System.out.println("### STACK ORIGINAL ###");
+        ShowStack(FirstStack);
     }
 
 
