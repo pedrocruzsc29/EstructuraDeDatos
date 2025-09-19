@@ -1,4 +1,5 @@
-package TP3_P6;
+package TP3_P6EvilTwin;
+
 import java.util.Scanner;
 
 import java.util.Scanner;

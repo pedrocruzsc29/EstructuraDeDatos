@@ -1,9 +1,6 @@
-package TP3_P6;
+package TP3_P6EvilTwin;
 
-import TP3_P1.Stack;
-
-public class TP3_P6 {
-
+public class TP3_P6EvilTwin {
 
     // CARGAR DATOS DE UN DESTINATARIO
     public static Entrega cargarDatos() {
