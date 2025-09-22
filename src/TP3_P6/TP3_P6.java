@@ -1,7 +1,5 @@
 package TP3_P6;
 
-import TP3_P1.Stack;
-
 public class TP3_P6 {
 
 
@@ -17,10 +15,14 @@ public class TP3_P6 {
         return entrega;
     }
 
-
     // CARGAR ENTREGAS
     public static void cargarEntrega(Stack<Entrega> stack) {
-        stack.push(cargarDatos());
+        if (stack.isFull()){
+            System.out.println("Se cargaron todas las entregas (STACK FULL)");
+
+        }else{
+            stack.push(cargarDatos());
+        }
     }
 
     // MOSTRAR ENTREGAS
@@ -103,6 +105,7 @@ public class TP3_P6 {
         }
 
         return cantidad;
+
     }
 
     // ELIMINAR DESTINATARIOS CON ENTREGAS REALIZADAS

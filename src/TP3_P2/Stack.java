@@ -1,8 +1,8 @@
-package TP3_P6EvilTwin;
+package TP3_P2;
 
 public class Stack<ELEMENT> {
 
-    private final int maximoTamanio = 10;
+    private final int maximoTamanio = 100;
     private ELEMENT[] datos;
     private int cuenta;
 
@@ -13,7 +13,7 @@ public class Stack<ELEMENT> {
 
     public void push(ELEMENT elemento) {
         if (this.isFull()) {
-            throw new RuntimeException("La pila est� llena...");
+            throw new RuntimeException("PILA FULL...");
         }
         this.datos[this.cuenta] = elemento;
         ++this.cuenta;
@@ -21,7 +21,7 @@ public class Stack<ELEMENT> {
 
     public ELEMENT pop() {
         if (this.isEmpty()) {
-            throw new RuntimeException("La pila est� vac�a...");
+            throw new RuntimeException("PILA VACIÁ...");
         }
         --this.cuenta;
         return this.datos[this.cuenta];
@@ -29,7 +29,7 @@ public class Stack<ELEMENT> {
 
     public ELEMENT peek() {
         if (this.isEmpty()) {
-            throw new RuntimeException("La pila est� vac�a...");
+            throw new RuntimeException("PILA VACIA...");
         }
         return this.datos[this.cuenta - 1];
     }

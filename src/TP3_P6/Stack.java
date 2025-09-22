@@ -14,7 +14,7 @@ public class Stack<T> {
         this.data = (T[]) new Object[maxSize];
         this.count = 0;
     }
-    // INSERT ELEMENT AT THE TOP - PUSH
+    // INSERT ELEMENT ON THE TOP - PUSH
     public T push(T element) {
         if (this.size() >= this.data.length) {
             throw new RuntimeException("Stack Full");
@@ -68,6 +68,12 @@ public class Stack<T> {
     public boolean isEmpty() {
         return this.count <= 0;
     }
+
+    // VERIFY IF THE STACK IS FULL
+    public boolean isFull() {
+        return this.count >= this.data.length;
+    }
+
 
     // RETURN STACK'S SIZE
     public int size() {
