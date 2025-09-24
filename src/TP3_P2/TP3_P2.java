@@ -37,10 +37,14 @@ public class TP3_P2 {
 
     // INVIERTE LOS ELEMENTOS NEGATIVOS
 
-    public static void InvertNegativeElements(int [] Array, Stack <Integer> NegaStack){
+    public static int [] InvertNegativeElements(int [] Array, Stack <Integer> NegaStack){
 
-
-
+        for (int i = 0; i < Array.length;i++){
+            if (Array[i] < 0){
+                Array[i] = NegaStack.pop();
+            }
+        }
+        return Array;
 
     }
 
@@ -50,9 +54,12 @@ public class TP3_P2 {
         int [] OriginalArray = {4,-1,7,-3,-5,2,9,15,-8};
         Stack<Integer> NegaStack = new Stack<Integer>();
         ShowArray(OriginalArray);
+        System.out.println("");
         System.out.println("Negative Stack");
         NegaStack = NegativeStack(OriginalArray);
         ShowStack(NegaStack);
+        OriginalArray = InvertNegativeElements(OriginalArray,NegaStack);
+        ShowArray(OriginalArray);
 
     }
 }
