@@ -96,46 +96,58 @@ public class TP3_P3 {
     // MITAD MAYOR
 
     public static void Halves(Stack <Integer> stack){
-        int first_half = 0;
-        int second_half = 0;
-        int suma_primer_mitad = 0;
-        int suma_segunda_mitad = 0;
+        int num = 0;
+        int counter = 0; // Nos servirá para calcular los numeros de las iteraciones sin que sufra cambios
+        int half = stack.count() / 2;
+        int suma_primer_mitad = 0; // Más cerca del tope
+        int suma_segunda_mitad = 0; // Más cerca de la base
         Stack <Integer> aux_stack = new Stack<Integer>();
 
-        System.out.println(stack.count());
-        first_half = stack.count() / 2;
-        second_half = stack.count();
-
         while(!stack.isEmpty()){
-
+            num = stack.pop();
+            counter++; // Cambia de tamaño para marcar cuantos elementos se llevan procesados
+            if(counter <= half){ // 1 < = 4 | 2 < = 4 | 3 < = 4 | 4 < = 4
+                suma_primer_mitad = suma_primer_mitad + num;
+            }else{ // 5 <= 4 | 6 <= 4 | 7 <= 4 | 8 < = 4 |
+                suma_segunda_mitad = suma_segunda_mitad + num;
+            }
+            aux_stack.push(num);
         }
 
-        System.out.println("Primer mitad: " + first_half);
+        while(!aux_stack.isEmpty()){
+            stack.push(aux_stack.pop());
+        }
+        System.out.println("Suma de 1ª Mitad: " + suma_primer_mitad);
+        System.out.println("Suma de 2ª Mitad: " + suma_segunda_mitad);
 
-        System.out.println("Segunda mitad: " + second_half);
-
+        if (suma_primer_mitad > suma_segunda_mitad){
+            System.out.println("1ª Mitad es Mayor");
+        }else{
+            System.out.println("2ª Mitad es Mayor");
+        }
     }
+
+    // MAIN CONTROLLER
 
     public static void main (String [] args){
         Stack <Integer> stack = new Stack<Integer>();
         stack = LoadStack();
         ShowStack(stack);
-        //int menor = Helper.GetValidNumber("Ingrese un Nª menor: ");
-        //int mayor = Helper.GetValidNumber("Ingrese un Nª mayor: ");
-        //DeleteHighLow(stack, menor, mayor);
+        int menor = Helper.GetValidNumber("Ingrese un Nª menor: ");
+        int mayor = Helper.GetValidNumber("Ingrese un Nª mayor: ");
+        DeleteHighLow(stack, menor, mayor);
         System.out.println("Elementos eliminados...");
         ShowStack(stack);
-        //System.out.println("* Pares duplicados *");
-        //DuplicateEvenNumbers(stack);
-        //ShowStack(stack);
+        System.out.println("* Pares duplicados *");
+        DuplicateEvenNumbers(stack);
+        ShowStack(stack);
         System.out.println("* Intercambio de Elementos *");
         SwapElements(stack);
         ShowStack(stack);
         System.out.println("* Sumas de Mitades *");
         Halves(stack);
-
-
-
-
+        ShowStack(stack);
     }
 }
+
+// zerocool
