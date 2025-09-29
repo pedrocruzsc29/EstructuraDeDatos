@@ -152,8 +152,8 @@ public class TP3_P6 {
                     break;
                 case 3:
                     System.out.println("### MARCAR COMO ENTREGADO ###");
-                    String dest = Helper.GetValidString("Destinatario a buscar: ");
-                    marcarComoEntregado(entregaStack,dest);
+                    String destino = Helper.GetValidString("Destinatario a buscar: ");
+                    marcarComoEntregado(entregaStack,destino);
                     break;
                 case 4:
                     System.out.println("### CANTIDAD DE PENDIENTES ###");
@@ -185,3 +185,5 @@ public class TP3_P6 {
         }while(op!=6);
     }
 }
+
+// zerocool
