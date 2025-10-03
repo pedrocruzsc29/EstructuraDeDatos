@@ -61,41 +61,35 @@ public class TP4_P1 {
             int num = elementosMax.remove();
             colaEnteros.add(num);
         }
+        while(!aux_queue.isEmpty()){
+            elementosMax.add(aux_queue.remove());
+        }
     }
 
-    // COLA CON NUMEROS QUE NO SUPERAN EL MAXIMO
+    // CONTADOR DE ELEMENTOS QUE NO SUPERAN EL MAXIMO
 
     public static int elementosMin(Queue <Integer> colaEnteros, int max){
         Queue <Integer> aux_queue = new Queue<Integer>();
-        //Queue <Integer> elementosMin = new Queue<Integer>();
         int counter = 0;
 
         while (!colaEnteros.isEmpty()){
             int num = colaEnteros.remove();
             if (num < max){
-                //elementosMin.add(num);
                 counter++;
             }else{
                 aux_queue.add(num);
             }
-        }
 
+        }
         while(!aux_queue.isEmpty()){
             colaEnteros.add(aux_queue.remove());
         }
-
         return counter;
     }
 
-
-
-
-
-
-
+    // MAIN CONTROLLER
 
     public static void main (String[] args) {
-        //int [] arreglo = {20, 40, 80, 50, 30, 70, 10};
         System.out.println("* CARGAR ELEMENTOS *");
         Queue<Integer> colaEnteros = cargarEnteros();
         System.out.println("* ELEMENTOS CARGADOS *");
