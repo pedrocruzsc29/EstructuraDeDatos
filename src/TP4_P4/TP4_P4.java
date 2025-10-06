@@ -2,21 +2,15 @@ package TP4_P4;
 
 public class TP4_P4 {
 
-    // CARGAR DATOS
-
-    public static Alerta cargarDatos(){
-        String ciudad = Helper.getValidString("Ciudad: ");
-        String tipo = Helper.getValidType();
-        int nivel = Helper.getValidLevel();
-        return new Alerta(ciudad,tipo,nivel);
-    }
-
     // CARGAR COLA DE ALERTAS
 
     public static Queue <Alerta> cargarAlertas(Queue <Alerta> alertas){
         String resp = "S";
         do{
-            alertas.add(cargarDatos());
+            String ciudad = Helper.getValidString("Ciudad: ");
+            String tipo = Helper.getValidType();
+            int nivel = Helper.getValidLevel();
+            alertas.add(new Alerta(ciudad,tipo,nivel));
             resp = Helper.getValidString("Desea cargar más alertas? (S/N): ");
 
         }while(resp.equals("S") || resp.equals("s"));
@@ -175,7 +169,11 @@ public class TP4_P4 {
                     if (!alertas.isEmpty()){
                         String tipo = Helper.getValidType();
                         Queue <Alerta> alertas_tipo = generarCola(alertas,tipo);
-                        mostrarAlertas(alertas_tipo);
+                        if (alertas_tipo.isEmpty()){
+                            System.out.println("No se encontraron alertas de este tipo...");
+                        }else{
+                            mostrarAlertas(alertas_tipo);
+                        }
                     }else{
                         System.out.println("No se cargaron alertas aún...");
                     }

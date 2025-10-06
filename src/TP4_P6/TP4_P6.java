@@ -4,26 +4,17 @@ import java.time.LocalTime;
 
 public class TP4_P6 {
 
-
-    // TOMAR DATOS DE REGISTRO
-
-    public static Registro cargarRegistro() {
-        int dni = Helper.getValidNumber("DNI: ");
-        String motivo = Helper.getValidString("Motivo: ");
-        LocalTime hora = Helper.getValidTime("Hora: ");
-        boolean fueAutorizado = Helper.getValidStatus();
-        return new Registro(dni, motivo, hora, fueAutorizado);
-    }
-
     // CARGAR REGISTROS A LA COLA
 
     public static Queue<Registro> cargarRegistros(Queue<Registro> registros) {
         String resp = "s";
         do {
-            Registro registro = cargarRegistro();
-            registros.add(registro);
+            int dni = Helper.getValidNumber("DNI: ");
+            String motivo = Helper.getValidString("Motivo: ");
+            LocalTime hora = Helper.getValidTime("Hora: ");
+            boolean fueAutorizado = Helper.getValidStatus();
+            registros.add(new Registro(dni,motivo,hora,fueAutorizado));
             resp = Helper.getValidString("Desea cargar más registros? (S/N): ");
-
         } while (resp.equals("s") || resp.equals("S"));
         return registros;
     }

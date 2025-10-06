@@ -2,13 +2,11 @@ package TP4_P1;
 
 public class TP4_P1 {
 
-
     // CARGAR ELEMENTOS
 
     public static Queue<Integer> cargarEnteros() {
         Queue <Integer> colaEnteros = new Queue<Integer>();
         int N = Helper.GetValidNumber("Ingrese la cantidad de elementos: ");
-
         for (int i = 0; i < N; i++){
             int num = 1 + (int) (Math.random() * 100);
             colaEnteros.add(num);
@@ -45,11 +43,9 @@ public class TP4_P1 {
                 aux_queue.add(num);
             }
         }
-
         while(!aux_queue.isEmpty()){
             colaEnteros.add(aux_queue.remove());
         }
-
         return elementosMax;
     }
 

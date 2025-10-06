@@ -2,27 +2,18 @@ package TP3_P6;
 
 public class TP3_P6 {
 
-
-    // CARGAR DATOS DE UN DESTINATARIO
-    public static Entrega cargarDatos() {
-
-        Entrega entrega = new Entrega();
-        String destinatario = Helper.GetValidString("Destinatario: ");
-        int piso = Helper.GetValidNumber("Piso: ");
-        boolean entregado = Helper.GetStatus();
-        entrega = new Entrega(destinatario, piso, entregado);
-
-        return entrega;
-    }
-
     // CARGAR ENTREGAS
-    public static void cargarEntrega(Stack<Entrega> stack) {
-        if (stack.isFull()){
-            System.out.println("Se cargaron todas las entregas (STACK FULL)");
+    public static Stack<Entrega> cargarEntrega(Stack<Entrega> stack) {
+        String resp = "S";
+        do{
+            String destinatario = Helper.GetValidString("Destinatario: ");
+            int piso = Helper.GetValidNumber("Piso: ");
+            boolean entregado = Helper.GetStatus();
+            stack.push(new Entrega(destinatario,piso,entregado));
+            resp = Helper.GetValidString("Desea cargar más entregas? (S/N): ");
 
-        }else{
-            stack.push(cargarDatos());
-        }
+        }while(resp.equalsIgnoreCase("S"));
+        return stack;
     }
 
     // MOSTRAR ENTREGAS
@@ -143,37 +134,59 @@ public class TP3_P6 {
             op = Helper.GetValidNumber("Elija una opción: ");
             switch (op){
                 case 1:
-                    System.out.println("### CARGAR ENTREGA ###");
-                    cargarEntrega(entregaStack);
+                    if (entregaStack.isFull()){
+                        System.out.println("No se pueden cargar más entregas (STACK FULL)");
+                    }else{
+                        System.out.println("### CARGAR ENTREGA ###");
+                        entregaStack = cargarEntrega(entregaStack);
+
+                    }
+
                     break;
                 case 2:
                     System.out.println("### DATOS DE ENTREGAS ###");
-                    mostrarEntregas(entregaStack);
+                    if (entregaStack.isEmpty()){
+                        System.out.println("No se cargaron entregas aún...");
+                    }else{
+                        mostrarEntregas(entregaStack);
+                    }
                     break;
                 case 3:
                     System.out.println("### MARCAR COMO ENTREGADO ###");
-                    String destino = Helper.GetValidString("Destinatario a buscar: ");
-                    marcarComoEntregado(entregaStack,destino);
+                    if (entregaStack.isEmpty()){
+                        System.out.println("No se cargaron entregas aún...");
+                    }else{
+                        String destino = Helper.GetValidString("Destinatario a buscar: ");
+                        marcarComoEntregado(entregaStack,destino);
+                    }
                     break;
                 case 4:
                     System.out.println("### CANTIDAD DE PENDIENTES ###");
-                    int piso = Helper.GetValidNumber("Piso: ");
-                    if (buscarPiso(entregaStack,piso)){
-                        if (obtenerPendientesPorPiso(entregaStack,piso) == 0){
-                            System.out.println("No hay entregas pendientes...");
-                        }else{
-                            System.out.println("Cantidad de Pendientes: " + obtenerPendientesPorPiso(entregaStack,piso));
-                        }
+                    if (entregaStack.isEmpty()){
+                        System.out.println("No se cargaron entregas aún...");
                     }else{
-                        System.out.println("Piso inexistente...");
+                        int piso = Helper.GetValidNumber("Piso: ");
+                        if (buscarPiso(entregaStack,piso)){
+                            if (obtenerPendientesPorPiso(entregaStack,piso) == 0){
+                                System.out.println("No hay entregas pendientes...");
+                            }else{
+                                System.out.println("Cantidad de Pendientes: " + obtenerPendientesPorPiso(entregaStack,piso));
+                            }
+                        }else{
+                            System.out.println("Piso inexistente...");
+                        }
                     }
                     break;
                 case 5:
                     System.out.println("### ELIMINAR ENTREGADOS ###");
-                    mostrarEntregas(entregaStack);
-                    vaciarEntregados(entregaStack);
-                    System.out.println("### DATOS DE ENTREGA ACTUALIZADOS ###");
-                    mostrarEntregas(entregaStack);
+                    if (entregaStack.isEmpty()){
+                        System.out.println("No se cargaron entregas aún...");
+                    }else{
+                        mostrarEntregas(entregaStack);
+                        vaciarEntregados(entregaStack);
+                        System.out.println("### DATOS DE ENTREGA ACTUALIZADOS ###");
+                        mostrarEntregas(entregaStack);
+                    }
                     break;
                 case 6:
                     System.out.println("### FIN DEL PROGRAMA ###");
