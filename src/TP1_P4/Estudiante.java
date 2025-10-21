@@ -96,12 +96,4 @@ public class Estudiante {
                 " Nota 2° Parcial: " + getNotaSegundoParcial();
     }
 
-
-
-
-
-
-
-
-
 }

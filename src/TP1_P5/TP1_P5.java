@@ -47,6 +47,17 @@ public class TP1_P5 {
     }
 
 
+    public static void main (String [] args){
+        Auto auto = new Auto();
+        Moto moto = new Moto();
+        Camion camion = new Camion();
+
+
+
+
+    }
+
+
 
 
 
