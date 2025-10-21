@@ -15,7 +15,7 @@ public class TP1_P2 {
             int stock = 0;
             double total = 0.0;
             int update_stock = 0;
-            System.out.println("### FERRETERIA ###");
+            System.out.println("### FERRETERÍA ###");
             System.out.println("1) Cargar producto");
             System.out.println("2) Comprar");
             System.out.println("3) Reponer stock");

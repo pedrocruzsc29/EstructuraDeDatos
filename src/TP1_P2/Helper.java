@@ -14,7 +14,7 @@ public class Helper {
         int num = 0;
         boolean band = false;
         do{
-            System.out.println(message);
+            System.out.print(message);
             String entrance = sc.nextLine().trim();
             if (entrance.isEmpty()){
                 System.out.println("Error: Debe completar este campo!");
