@@ -11,7 +11,7 @@ public class Helper {
     public static int ChooseData(){
         boolean band = false;
         System.out.println("### DATO A MODIFICAR ###");
-        System.out.println("1) Telefono");
+        System.out.println("1) Teléfono");
         System.out.println("2) Email");
         int op = Helper.GetValidNumber("Elija una opción: ");
         int output = 0;
@@ -52,7 +52,7 @@ public class Helper {
     }
 
 
-    // OBTENER UN NUMERO DE TELEFONO VALIDO
+    // OBTENER UN NUMERO DE TELÉFONO VALIDO
 
     public static int GetValidPhoneNumber (String message){
         String entrance;
@@ -66,7 +66,7 @@ public class Helper {
                 System.out.println("Error: Debe completar el campo!");
             }else {
                 if (entrance.length() != 9){
-                    System.out.println("Error: Debe tener 9 digitos!");
+                    System.out.println("Error: Debe tener 9 dígitos!");
                 } else{
                     try {
                         num = Integer.parseInt(entrance);

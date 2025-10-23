@@ -60,7 +60,7 @@ public class Vehiculo {
     // OBTENER INFORMACIÓN BÁSICA DEL VEHÍCULO
 
     public String getBasicDescription(){
-        return "MARCA: " + getMarca() + " MODELO: " + getModel() + " AÑO: " + getYearManufacture();
+        return "MARCA: " + getMarca() + " MODELO: " + getModel() + " AÑO DE FABRICACIÓN: " + getYearManufacture() + " ";
     }
 
     // CALCULAR ANTIGÜEDAD
@@ -73,7 +73,6 @@ public class Vehiculo {
     @Override
 
     public String toString(){
-        return "VEHICULO -> MARCA: " + getMarca() + " MODELO: " + getModel() +
-                "AÑO: " + getYearManufacture() + "PRECIO: " + getPrecio();
+        return "VEHICULO -> MARCA: " + getMarca() + " MODELO: " + getModel() + "AÑO: " + getYearManufacture() + "PRECIO: " + getPrecio();
     }
 }

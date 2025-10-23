@@ -68,7 +68,7 @@ public class Helper {
             if (entrance.isEmpty()){
                 System.out.println("Error: Debe completar el campo!");
             }else{
-                if (entrance.matches(".*\\d.*\"")){
+                if (entrance.matches(".*\\d.*")){
                     System.out.println("Error: La entrada tiene numeros!");
                 }else{
                     band = true;

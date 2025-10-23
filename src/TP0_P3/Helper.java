@@ -28,7 +28,7 @@ public class Helper {
         return number;
     }
 
-    // VALIDAR CARACTER
+    // VALIDAR CARÁCTER
     public static String GetCharacter (String message){
         boolean band = false;
         String entrance;

@@ -38,12 +38,10 @@ public class Helper {
     public static String GetValidString (String message){
 
         System.out.print(message);
-        String entrance = sc.nextLine();
-        return entrance;
-
+        return sc.nextLine();
     }
 
-    // GET VALID DATE
+    // OBTENER FECHA VALIDA
 
     public static LocalDate GetValidDate(String message){
         boolean valid = false;

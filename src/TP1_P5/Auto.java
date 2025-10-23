@@ -62,4 +62,10 @@ public class Auto extends Vehiculo{
 
     }
 
+    @Override
+
+    public String toString(){
+        return "Numero de Puertas: " + getNumeroPuertas() + " Tipo de Combustible: " + getTipoCombustible() + " Capacidad Lts: " + getCapacidadBaulLitros();
+    }
+
 }

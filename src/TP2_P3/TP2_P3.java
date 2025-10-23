@@ -1,33 +1,30 @@
 package TP2_P3;
 
-
-import java.sql.Array;
-
 public class TP2_P3 {
 
     // CARGAR PEDIDOS
 
-    public static void LoadDeliveryCode(int [] codigos, String [] estados){
+    public static void LoadDeliveryCode(int [] codes, String [] estados){
 
-        for (int i = 0; i < codigos.length; i++){
+        for (int i = 0; i < codes.length; i++){
             System.out.println("### PEDIDO N°" + (i+1));
-            codigos[i] = Helper.GetValidNumber("Codigo: ");
+            codes[i] = Helper.GetValidNumber("Código: ");
             estados[i] = Helper.GetValidStatus();
         }
     }
 
     // MOSTRAR PEDIDOS
 
-    public static void ShowDeliveries(int [] codigos, String [] estados){
-        for(int i = 0; i < codigos.length; i++){
-            System.out.println("PEDIDO N°" + (i+1) + " Codigo: " + codigos[i] + " Estado: " + estados[i]);
+    public static void ShowDeliveries(int [] codes, String [] estados){
+        for(int i = 0; i < codes.length; i++){
+            System.out.println("PEDIDO N°" + (i+1) + " Código: " + codes[i] + " Estado: " + estados[i]);
         }
 
     }
 
     // OBTENER CANTIDAD DE PEDIDOS
 
-    public static int GetAmmount(String [] estados, String estado){
+    public static int GetAmount(String [] estados, String estado){
         int cant = 0;
         for (int i = 0; i < estados.length; i++){
             if (estado.equals(estados[i])){
@@ -37,13 +34,13 @@ public class TP2_P3 {
         return cant;
     }
 
-    // OBTENER ARREGLO CON LOS CODIGOS DE UN PEDIDO PARTICULAR
+    // OBTENER ARREGLO CON LOS CÓDIGOS DE UN PEDIDO PARTICULAR
 
-    public static int [] GetCodes(int [] codigos, String [] estados, String estado){
-        int [] CodeArray = null;
-        for (int i = 0; i < codigos.length; i++){
+    public static int [] GetCodes(int [] codes, String [] estados, String estado){
+        int [] CodeArray = new int[codes.length];
+        for (int i = 0; i < codes.length; i++){
             if (estado.equals(estados[i])){
-                CodeArray[i] = codigos[i];
+                CodeArray[i] = codes[i];
             }
         }
         return CodeArray;
@@ -53,7 +50,7 @@ public class TP2_P3 {
     //
 
 
-    // MAIN CONTROLER
+    // MAIN CONTROLLER
 
     public static void main (String[] args){
         int [] codigos = null;
@@ -91,8 +88,8 @@ public class TP2_P3 {
                         System.out.println("### PEDIDOS ###");
                         System.out.println("Se calcula la cantidad de pedidos en un estado particular");
                         String estado = Helper.GetValidStatus();
-                        int cant_estado = GetAmmount(estados,estado);
-                        System.out.println("Cantidad de Pedidos con estado: " + estado + ": " + cant_estado);
+                        int cant_estado = GetAmount(estados,estado);
+                        System.out.println("Cantidad de Pedidos con estado " + estado + ": " + cant_estado);
                     } else{
                         System.out.println("No se cargaron pedidos aún...");
                     }
@@ -101,7 +98,28 @@ public class TP2_P3 {
                 case 4:
                     if (codigos != null){
                         System.out.println("### PEDIDOS ###");
+                        String estado = Helper.GetValidStatus();
+                        int cant_pedidos = GetAmount(estados,estado);
+                        if (cant_pedidos > 0){
+                            
+                        }
+
+
+                    }else{
+                        System.out.println("No se cargaron pedidos aún...");
+
+
                     }
+                    break;
+                case 5:
+                    if (codigos != null){
+                        System.out.println("### PEDIDOS ###");
+                        System.out.println("Otra cosa");
+                    }else{
+                        System.out.println("No se cargaron pedidos aún...");
+                    }
+                    break;
+
 
 
                 case 6:

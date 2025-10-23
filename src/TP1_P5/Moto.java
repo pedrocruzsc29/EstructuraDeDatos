@@ -48,4 +48,11 @@ public class Moto extends Vehiculo {
         }
     }
 
+    // TO STRING
+    @Override
+
+    public String toString(){
+        return "Cilindrada: " + getCilindradaCC() + "CC - Manillar: " + getTipoManillar();
+    }
+
 }

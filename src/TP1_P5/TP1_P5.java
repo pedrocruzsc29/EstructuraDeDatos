@@ -51,14 +51,26 @@ public class TP1_P5 {
         Auto auto = new Auto();
         Moto moto = new Moto();
         Camion camion = new Camion();
+        System.out.println("=== SISTEMA DE GESTIÓN DE VEHÍCULOS ===");
+        System.out.println("*** AUTO ***");
+        auto = cargarAuto();
+        System.out.println("*** MOTO ***");
+        moto = cargarMoto();
+        System.out.println("*** CAMIÓN ***");
+        camion = cargarCamion();
 
-
-
-
+        System.out.println("== DATOS DE VEHÍCULOS ==");
+        System.out.println("AUTO: " + auto.getBasicDescription() + "\n" + auto);
+        System.out.println("Antigüedad: " + auto.calculateAge(2025) + " años");
+        System.out.println("Es familiar? -> " + auto.esFamiliar());
+        System.out.println("Es Eco Amigable? -> " + auto.esEcoAmigable());
+        System.out.println("MOTO: " + moto.getBasicDescription() + "\n" + moto);
+        System.out.println("Antigüedad: " + moto.calculateAge(2025) + " años");
+        System.out.println("Tipo de Cilindrada: " + moto.engineClassification());
+        System.out.println("CAMIÓN: " + camion.getBasicDescription() + "\n" + camion);
+        System.out.println("Antigüedad: " + camion.calculateAge(2025) + " años");
+        System.out.println("Requiere licencia especial? -> " + camion.requiereLicenciaEspecial());
+        System.out.println("Capacidades especiales: " + camion.describirCapacidadesEspeciales());
     }
-
-
-
-
 
 }

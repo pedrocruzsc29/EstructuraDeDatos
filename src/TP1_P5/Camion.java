@@ -66,4 +66,10 @@ public class Camion extends Vehiculo{
             return "Útil para todo tipo de carga";
         }
     }
+
+    @Override
+
+    public String toString(){
+        return "Capacidad de Carga: " + getCapacidadCarga() + " Número de Ejes: " + getNumeroEjes() + " Tipo de Carrocería: " + getBodyType();
+    }
 }

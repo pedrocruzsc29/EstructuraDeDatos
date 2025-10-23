@@ -18,7 +18,7 @@ public class Helper {
             if (entrance.isEmpty()){
                 System.out.println("Error: Debe ingresar un numero!");
             }else{
-                if (entrance.matches(".*//d.*/")){
+                if (entrance.matches(".*\\d.*")){
                     System.out.println("La entrada contiene numeros!");
                 }else{
                     band = true;
