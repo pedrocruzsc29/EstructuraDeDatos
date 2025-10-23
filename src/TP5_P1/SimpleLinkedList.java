@@ -183,6 +183,15 @@ public class SimpleLinkedList<ELEMENT> implements ILinkedList<ELEMENT> {
 
     }
 
+    // AGREGAR ELEMENTOS EN UNA POSICIÓN DADA
+
+    public void AddPosition(ELEMENT element, int pos){
+        if (pos < 0 || pos > this.count){
+
+        }
+
+    }
+
 
     //endregion
 
