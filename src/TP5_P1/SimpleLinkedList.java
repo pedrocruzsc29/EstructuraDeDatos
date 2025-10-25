@@ -185,11 +185,25 @@ public class SimpleLinkedList<ELEMENT> implements ILinkedList<ELEMENT> {
 
     // AGREGAR ELEMENTOS EN UNA POSICIÓN DADA
 
-    public void AddPosition(ELEMENT element, int pos){
-        if (pos < 0 || pos > this.count){
-
+    public void AddPosition(ELEMENT item, int pos) {
+        if (pos < 0 || pos > this.count) {
+            throw new IndexOutOfBoundsException("Posición no valida (" + pos + ")");
         }
+        if (pos == 0) {
+            addFirst(item);
+        } else if (pos == this.count) {
+            addLast(item);
+        } else {
+            Node<ELEMENT> skip = this.head; // Head apunta al primer nodo
+            for (int i = 0; i < pos - 1; i++) { // Se avanza hasta la posición anterior al nodo a agregar
+                skip = skip.next; //
+            }
 
+            Node<ELEMENT> temp = new Node<>(item, null);
+            temp.next = skip.next; // Conectar el nuevo nodo con el siguiente
+            skip.next = temp; // Conectar el nodo anterior con el nuevo
+            ++this.count; // Aumentar el tamaño de los nodos
+        }
     }
 
 
