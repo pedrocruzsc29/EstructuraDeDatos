@@ -183,27 +183,49 @@ public class SimpleLinkedList<ELEMENT> implements ILinkedList<ELEMENT> {
 
     }
 
-    // AGREGAR ELEMENTOS EN UNA POSICIÓN DADA
+    // AGREGAR ELEMENTO EN UNA POSICIÓN DADA
 
-    public void AddPosition(ELEMENT item, int pos) {
-        if (pos < 0 || pos > this.count) {
-            throw new IndexOutOfBoundsException("Posición no valida (" + pos + ")");
-        }
-        if (pos == 0) {
-            addFirst(item);
-        } else if (pos == this.count) {
-            addLast(item);
+    public void InsertElement(ELEMENT item, int pos) {
+        //if (pos < 0 || pos >= this.count) { // Se verifica que la posición este dentro del intervalo
+        //    throw new IndexOutOfBoundsException("Posición no valida (" + pos + ")"); // Se arroja un error
+        //}
+        if (pos == 0) { // Si la posición es 1
+            addFirst(item); // Se agrega al principio
+        } else if (pos == this.count) { // en caso, que la posición sea igual a la cantidad de elementos
+            addLast(item); // Se agrega al final
         } else {
-            Node<ELEMENT> skip = this.head; // Head apunta al primer nodo
+            Node<ELEMENT> skip = this.head; // Head apunta al primer nodo, este valor se lo pasa a skip (skip es el puntero que voy a usar para recorrer la lista)
             for (int i = 0; i < pos - 1; i++) { // Se avanza hasta la posición anterior al nodo a agregar
-                skip = skip.next; //
+                skip = skip.next; // next permite que el puntero se siga moviendo hasta el siguiente nodo, ahora skip esta apuntando al nodo anterior a la posición a insertar
             }
 
-            Node<ELEMENT> temp = new Node<>(item, null);
-            temp.next = skip.next; // Conectar el nuevo nodo con el siguiente
-            skip.next = temp; // Conectar el nodo anterior con el nuevo
+            Node<ELEMENT> temp = new Node<>(item, null); // Se crea el nodo temp -> este contiene el valor de item, pero no apunta a ningún lado
+            temp.next = skip.next; // Conectar el nuevo nodo con el siguiente -> Si temp.next [x] ahora apunta a [c] ([a][b][x][c]) conecta [X] con el siguiente ([C]) [A]→[B]→[C], ahora [X]→[C]
+            skip.next = temp; // Conectar el nodo anterior con el nuevo  -> [b] -> [x] conecta el anterior ([B]) con el nuevo ([X]) [A]→[B]→[X]→[C]
             ++this.count; // Aumentar el tamaño de los nodos
         }
+    }
+
+    // ELIMINAR ELEMENTO EN UNA POSICIÓN DADA
+
+    public void DeleteElement(int pos){
+        //if (pos < 0 || pos >= this.count){
+        //    throw new IndexOutOfBoundsException("Posición no valida (" + pos + ")");
+        //}
+        if (pos == 0){
+            removeFirst();
+        }else if (pos == this.count - 1){
+            removeLast();
+        }else{
+            Node <ELEMENT> skip = this.head;
+            for (int i = 0; i < pos - 1; i++){
+                skip = skip.next;
+            }
+            ELEMENT item = skip.next.item; // Opcional, guardar el valor del nodo a borrar
+            skip.next = skip.next.next; // conectar el nodo anterior (al que se va a eliminar) con el siguiente (del que se eliminó).
+            --this.count; // Disminuyo
+        }
+
     }
 
 
