@@ -44,7 +44,7 @@ public class TP5_P1 {
         int pos = Helper.getValidIntegers("Ingrese posición: ");
         pos = pos - 1;
         if (pos < 0 || pos >= empleados.size()){
-            throw new IndexOutOfBoundsException("Posición no valida (" + pos + 1 + ")");
+            throw new IndexOutOfBoundsException("Posición no valida (" + (pos + 1) + ")");
         }else{
             Empleado empleado = cargarEmpleado();
             empleados.InsertElement(empleado,pos);
@@ -60,7 +60,7 @@ public class TP5_P1 {
         int pos = Helper.getValidIntegers("Ingrese posición: ");
         pos = pos - 1;
         if (pos < 0 || pos >= empleados.size()){
-            throw new IndexOutOfBoundsException("Posición no valida (" + pos + 1 + ") ");
+            throw new IndexOutOfBoundsException("Posición no valida (" + (pos + 1) + ") ");
         }else{
             empleados.DeleteElement(pos);
             System.out.println("Se elimino el empleado...");

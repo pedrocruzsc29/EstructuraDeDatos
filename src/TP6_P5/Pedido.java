@@ -58,7 +58,12 @@ public class Pedido implements Comparable <Pedido>{
     }
 
     @Override
+    public String toString(){
+        return "Numero de Pedido: " + getNumeroPedido() + " Cliente: " + getNombreCliente() + " Producto: " + getNombreProducto()
+                + " Cantidad: " + getCantidad();
+    }
 
+    @Override
     public int compareTo(Pedido pedido){
         return this.nombreCliente.compareTo(pedido.nombreCliente);
     }

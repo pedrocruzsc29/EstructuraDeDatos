@@ -1,4 +1,4 @@
-package TP5_P1;
+package TP5_P3;
 
 // from https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/LinkedList.html
 public interface ILinkedList<ELEMENT> extends Iterable<ELEMENT> {
@@ -14,9 +14,7 @@ public interface ILinkedList<ELEMENT> extends Iterable<ELEMENT> {
     public ELEMENT removeFirst();
     // Removes and returns the last element from this list.
     public ELEMENT removeLast();
-    // Insert an element in a given position
-    public void InsertElement(ELEMENT item, int pos);
-    // Delete an element in a given position
-    public void DeleteElement(int pos);
+    // Add elements in an ascending order
+    public void addInOrder(ELEMENT item);
 
 }
