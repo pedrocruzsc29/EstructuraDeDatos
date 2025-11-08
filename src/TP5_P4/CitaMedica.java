@@ -86,3 +86,5 @@ public class CitaMedica {
                 + getFecha() + " Especialidad: " + getEspecialidad() + " Confirmado?: " + getConfirmada();
     }
 }
+
+// Autor: zerocool

@@ -1,6 +1,5 @@
 package TP6_P2B;
 
-import TP6_P2A.BinaryTree;
 
 public class TP6_P2B {
 

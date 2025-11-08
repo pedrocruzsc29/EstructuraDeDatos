@@ -33,3 +33,5 @@ public class TP6_P1 {
 
     }
 }
+
+// Autor: zerocool

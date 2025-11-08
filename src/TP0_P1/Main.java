@@ -5,13 +5,13 @@ public class Main { // TP 0 -> Punto Uno | Conversor de Medidas y Temperaturas
     // FUNCIONES
 
     public static void MenuLongitud(){
-        System.out.println("1) Metros a centimetros");
-        System.out.println("2) Centimetros a metros");
+        System.out.println("1) Metros a centímetros");
+        System.out.println("2) Centímetros a metros");
         int op1 = Helper.ValidOption("Ingrese una opción:");
         switch (op1){
             case 1:
                 double metros = Helper.ValidNumber("Ingrese los metros: ");
-                System.out.println("Medida Original: " + metros + " mts. Centimetros: " + metros * 100 + " cm.");
+                System.out.println("Medida Original: " + metros + " mts. Centímetros: " + metros * 100 + " cm.");
                 break;
             case 2:
                 double centimeters = Helper.ValidNumber("Ingrese los cm: ");
@@ -48,8 +48,8 @@ public class Main { // TP 0 -> Punto Uno | Conversor de Medidas y Temperaturas
         System.out.println("### CONVERSOR DE UNIDADES ###");
         System.out.println("1) Conversor de Longitud");
         System.out.println("2) Conversor de Temperatura");
-        int opcion = Helper.ValidOption("Elija una opción:");
-        switch (opcion){
+        int op = Helper.ValidOption("Elija una opción:");
+        switch (op){
             case 1:
                 MenuLongitud();
                 break;
@@ -58,7 +58,6 @@ public class Main { // TP 0 -> Punto Uno | Conversor de Medidas y Temperaturas
                 break;
             default:
                 System.out.println("Elija una opción correcta!");
-
         }
         System.out.println("### FIN DEL PROGRAMA ###");
     }

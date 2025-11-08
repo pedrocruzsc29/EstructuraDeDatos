@@ -16,12 +16,7 @@ public class TP5_P4 {
     public static void main(String [] args){
         SistemaCitas sistema = new SistemaCitas();
         int op = 0;
-        sistema.agregarCita(new CitaMedica(1, "Pedro Cruz", "Dr. Gómez", LocalDate.of(2025, 11, 10), "Cardiología", false));
-        sistema.agregarCita(new CitaMedica(2, "Lucía López", "Dra. Pérez", LocalDate.of(2025, 11, 15), "Dermatología", true));
-        sistema.agregarCita(new CitaMedica(3, "Juan Martínez", "Dr. Gómez", LocalDate.of(2025, 11, 18), "Cardiología", false));
-        sistema.agregarCita(new CitaMedica(4, "María Torres", "Dra. Díaz", LocalDate.of(2025, 12, 5), "Neurología", true));
-        sistema.agregarCita(new CitaMedica(5, "Pedro Cruz", "Dra. Pérez", LocalDate.of(2025, 12, 20), "Dermatología", false));
-        do{
+       do{
             System.out.println("*** HOSPITAL PABLO SORIA ***");
             System.out.println("1) Cargar citas médicas");
             System.out.println("2) Mostrar citas médicas");
@@ -126,3 +121,5 @@ public class TP5_P4 {
         }while (op != 8);
     }
 }
+
+// Autor: zerocool

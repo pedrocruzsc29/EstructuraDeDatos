@@ -26,9 +26,8 @@ public class TP6_P2A {
         System.out.print("Post order: "); nodo60.PostOrder();
         System.out.println(" ");
         System.out.print("Descending order: ");nodo60.DescendingOrder();
-
-
     }
 
-
 }
+
+// Autor: zerocool
