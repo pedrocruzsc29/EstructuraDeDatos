@@ -134,6 +134,12 @@ public class BinarySearchTree<ELEMENT extends Comparable<ELEMENT>> extends Binar
         return save;
     }
 
+    // IS EMPTY
+
+    public boolean isEmpty() {
+        return this.NodeCount() == 0;
+    }
+
     // BUSCAR
 
     public ELEMENT searchElement(ELEMENT element){
