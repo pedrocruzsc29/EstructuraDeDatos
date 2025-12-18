@@ -10,10 +10,10 @@ public class TP6_P5{
         String resp = "S";
         do{
             int numeroPedido = Helper.getValidIntegers("N° Pedido: ");
-            String nombrePedido = Helper.getValidStrings("Nombre del Pedido: ");
+            String nombreCliente = Helper.getValidStrings("Nombre del Cliente: ");
             String nombreProducto = Helper.getValidStrings("Nombre del Producto: ");
             int cantidad = Helper.getValidIntegers("Cantidad: ");
-            pedidos.add(new Pedido(numeroPedido,nombrePedido,nombreProducto,cantidad));
+            pedidos.add(new Pedido(numeroPedido,nombreCliente,nombreProducto,cantidad));
             resp = Helper.getValidStrings("Desea cargar otro pedido? (S/N): ");
 
         }while (resp.equalsIgnoreCase("S"));
@@ -27,19 +27,30 @@ public class TP6_P5{
         pedidos.PostOrder();
     }
 
-    // BUSCAR POR NOMBRE
-
-    public static boolean buscarNombre(BinarySearchTree <Pedido> pedidos, String nombre){
-
-
-    }
-
-
     // MODIFICAR POR NOMBRE DE CLIENTE
+
+    public static void modificarNombre(BinarySearchTree <Pedido> pedidos, String nombreCliente){
+        Pedido pedido = new Pedido(0,nombreCliente,"",0);
+        Pedido encontrado = pedidos.searchElement(pedido);
+        if (encontrado != null){
+            encontrado.setNombreCliente(Helper.getValidStrings("Ingrese el nuevo nombre:"));
+            System.out.println("Se modificó el nombre...");
+        }else{
+            System.out.println("No se encontró el nombre a modificar...");
+        }
+    }
 
 
 
     // VALIDAR NO REPETIDOS
+
+
+    // ELIMINAR
+
+    public static void eliminarPedido(BinarySearchTree <Pedido> pedidos){}
+
+
+    // MAIN CONTROLLER
 
 
     public static void main (String [] args){
@@ -65,27 +76,29 @@ public class TP6_P5{
                     break;
                 case 2:
                     System.out.println("*** PEDIDOS REALIZADOS ***");
-                    mostrarPedidos(pedidos);
+                    if (pedidos.isEmpty()){
+                        System.out.println("No se cargaron pedidos aún...");
+                    }else{
+                        mostrarPedidos(pedidos);
+                    }
                     break;
                 case 3:
-
-                    
+                    System.out.println("*** MODIFICAR NOMBRE ***");
+                    if (pedidos.isEmpty()){
+                        System.out.println("No se cargaron pedidos aún...");
+                    }else{
+                        String nombreCliente = Helper.getValidStrings("Nombre a buscar: ");
+                        modificarNombre(pedidos,nombreCliente);
+                    }
+                    break;
+                case 4:
+                    System.out.println("*** ELIMINAR PEDIDOS ***");
                 default:
                     System.out.print("xd");
 
             }
 
-
-
-
         }while(op != 5);
 
-
-
-
     }
-
-
-
-
 }

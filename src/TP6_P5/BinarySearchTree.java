@@ -1,5 +1,8 @@
 package TP6_P5;
 
+
+import TP6_P4.BinaryTree;
+
 public class BinarySearchTree<ELEMENT extends Comparable<ELEMENT>> extends BinaryTree<ELEMENT> {
 
 
@@ -54,10 +57,10 @@ public class BinarySearchTree<ELEMENT extends Comparable<ELEMENT>> extends Binar
         } // find es el nodo con el valor a extraer y prev el padre de ese nodo
         ELEMENT save = find.item;
         BTNode<ELEMENT> node = find;
-        if (node.right == null) { // no hay subarbol derecho
+        if (node.right == null) { // no hay subárbol derecho
             node = node.left; // nodo con un descendiente u hoja
         } else {
-            if (node.left == null) { // no hay subarbol izquierdo
+            if (node.left == null) { // no hay subárbol izquierdo
                 node = node.right; // nodo con un descendiente u hoja
             } else { // dos descendientes
                 BTNode<ELEMENT> last = node;
@@ -76,7 +79,7 @@ public class BinarySearchTree<ELEMENT extends Comparable<ELEMENT>> extends Binar
                 temp.right = null;
             }
         }
-        // reajustar el arbol
+        // reajustar el árbol
         if (find == this.root) {
             this.root = node;
         } else {
@@ -133,4 +136,41 @@ public class BinarySearchTree<ELEMENT extends Comparable<ELEMENT>> extends Binar
         return save;
     }
 
+    // IS EMPTY
+
+    public boolean isEmpty() {
+        return this.NodeCount() == 0;
+    }
+
+    // BUSCAR
+
+    public ELEMENT searchElement(ELEMENT element){
+        BTNode <ELEMENT> temp = this.root; // temp me va a servir para recorrer el árbol
+        while (temp != null){ // Mientras el temp sea distinto de null
+            int comparison = element.compareTo(temp.item); // Se compara el elemento a buscar con él del árbol, se almacena en comparison
+            if (comparison == 0){ // Encontramos el elemento
+                return  temp.item;
+            }else if (comparison < 0){ // -1, debemos buscar por la izquierda
+                temp = temp.left;
+            }else{ // En caso contrario sería 1, debemos buscar por la derecha
+                temp = temp.right;
+            }
+        }
+        return null; // No se encontró el elemento
+    }
+
+    // MODIFICAR
+
+    public boolean modifyElement(ELEMENT element, ELEMENT nuevo){
+        if (searchElement(element) == null){ // Buscamos si el elemento existe, caso contrario, devolvemos false
+            return false;
+        }
+        if (searchElement(nuevo) == null) { // Buscamos si el elemento a agregar exista, a modo de no cargar repetidos
+            return false;
+        }
+        remove(element); // De existir, eliminamos el elemento buscado
+        add(nuevo); // Agregamos el nuevo
+        return true; // Confirmamos que se agrego
+    }
 }
+
