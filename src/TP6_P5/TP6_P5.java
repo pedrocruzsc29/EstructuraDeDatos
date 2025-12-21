@@ -1,7 +1,5 @@
 package TP6_P5;
 
-import TP6_P1.BinaryTree;
-
 public class TP6_P5{
 
     // CARGAR PEDIDOS
@@ -9,11 +7,16 @@ public class TP6_P5{
     public static BinarySearchTree cargarPedidos (BinarySearchTree<Pedido> pedidos){
         String resp = "S";
         do{
-            int numeroPedido = Helper.getValidIntegers("N° Pedido: ");
+
             String nombreCliente = Helper.getValidStrings("Nombre del Cliente: ");
-            String nombreProducto = Helper.getValidStrings("Nombre del Producto: ");
-            int cantidad = Helper.getValidIntegers("Cantidad: ");
-            pedidos.add(new Pedido(numeroPedido,nombreCliente,nombreProducto,cantidad));
+            if (noRepetidos(pedidos,nombreCliente)) {
+                System.out.println("Nombre ya cargado. Ingrese uno nuevo...");
+            }else{
+                int numeroPedido = Helper.getValidIntegers("N° Pedido: ");
+                String nombreProducto = Helper.getValidStrings("Nombre del Producto: ");
+                int cantidad = Helper.getValidIntegers("Cantidad: ");
+                pedidos.add(new Pedido(numeroPedido,nombreCliente,nombreProducto,cantidad));
+            }
             resp = Helper.getValidStrings("Desea cargar otro pedido? (S/N): ");
 
         }while (resp.equalsIgnoreCase("S"));
@@ -24,7 +27,9 @@ public class TP6_P5{
     // MOSTRAR PEDIDOS POST ORDEN -> IZQUIERDA -> DERECHA -> RAÍZ
 
     public static void mostrarPedidos(BinarySearchTree<Pedido> pedidos){
+
         pedidos.PostOrder();
+        System.out.println(" ");
     }
 
     // MODIFICAR POR NOMBRE DE CLIENTE
@@ -33,25 +38,38 @@ public class TP6_P5{
         Pedido pedido = new Pedido(0,nombreCliente,"",0);
         Pedido encontrado = pedidos.searchElement(pedido);
         if (encontrado != null){
-            encontrado.setNombreCliente(Helper.getValidStrings("Ingrese el nuevo nombre:"));
+            encontrado.setNombreCliente(Helper.getValidStrings("Ingrese el nuevo nombre: "));
             System.out.println("Se modificó el nombre...");
         }else{
             System.out.println("No se encontró el nombre a modificar...");
         }
     }
 
-
-
     // VALIDAR NO REPETIDOS
 
+    public static boolean noRepetidos(BinarySearchTree <Pedido> pedidos, String nombreCliente) {
+        boolean existe = false;
+        Pedido pedido = new Pedido(0, nombreCliente, "", 0);
+        if (pedidos.searchElement(pedido) != null) {
+            existe = true;
+        }
+        return existe;
+    }
 
     // ELIMINAR
 
-    public static void eliminarPedido(BinarySearchTree <Pedido> pedidos){}
-
+    public static void eliminarPedido(BinarySearchTree <Pedido> pedidos){
+        String nombreCliente = Helper.getValidStrings("Nombre del Cliente: ");
+        Pedido pedido = new Pedido(0,nombreCliente,"",0);
+        if (pedidos.searchElement(pedido) != null){
+            pedidos.remove(pedido);
+            System.out.println("Pedido eliminado exitosamente...");
+        }else{
+            System.out.println("No se encontró el pedido...");
+        }
+    }
 
     // MAIN CONTROLLER
-
 
     public static void main (String [] args){
 
@@ -93,12 +111,18 @@ public class TP6_P5{
                     break;
                 case 4:
                     System.out.println("*** ELIMINAR PEDIDOS ***");
+                    if (pedidos.isEmpty()){
+                        System.out.println("No se cargaron pedidos aún...");
+                    }else{
+                        eliminarPedido(pedidos);
+                    }
+                    break;
+                case 5:
+                    System.out.println("# FIN DEL PROGRAMA #");
+                    break;
                 default:
-                    System.out.print("xd");
-
+                    System.out.print("Elija una opción valida!");
             }
-
         }while(op != 5);
-
     }
 }
